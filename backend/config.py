@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     app_env: str = "dev"
     app_name: str = "LMS MVP API"
     database_url: str = "postgresql://postgres:xVFOrWrHXkYlYanwDNmaRvmcQbJayoOd@postgres.railway.internal:5432/railway"
-    cors_origins: str = "postgresql://postgres:xVFOrWrHXkYlYanwDNmaRvmcQbJayoOd@postgres.railway.internal:5432/railway"
+    cors_origins: str = "https://cuongc15-biclgsn3x-biencuongs-projects.vercel.app/"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
