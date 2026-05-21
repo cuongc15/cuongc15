@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: lms-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: APP_NAME
+        value: LMS MVP API
+      - key: CORS_ORIGINS
+        value: https://lms-web.onrender.com
+      - key: DATABASE_URL
+        sync: false
+
+  - type: web
+    name: lms-web
+    runtime: static
+    rootDir: webapp
+    plan: free
+    staticPublishPath: .
+    envVars: []
