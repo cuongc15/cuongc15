@@ -143,3 +143,13 @@ Nếu Railway báo fail ở bước **Network > Healthcheck**, nguyên nhân th�
 Sau deploy, kiểm tra:
 - `GET /health`
 - Nếu `db_ok=false`, kiểm tra lại `DATABASE_URL` và environment của PostgreSQL.
+
+
+### Lỗi Render Blueprint: `no such plan free for service type web`
+
+Nguyên nhân: tài khoản/region hiện tại không chấp nhận `plan: free` cho `type: web` trong blueprint.
+
+Cách sửa đã áp dụng trong repo:
+- Xóa trường `plan` khỏi `render.yaml` để Render tự chọn plan khả dụng theo account.
+
+Nếu cần, bạn có thể vào dashboard Render chọn plan thủ công sau khi service được tạo.

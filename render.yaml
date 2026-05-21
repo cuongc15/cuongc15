@@ -3,7 +3,6 @@ services:
     name: lms-api
     runtime: docker
     dockerfilePath: ./Dockerfile
-    plan: free
     healthCheckPath: /health
     envVars:
       - key: APP_ENV
@@ -19,6 +18,5 @@ services:
     name: lms-web
     runtime: static
     rootDir: webapp
-    plan: free
     staticPublishPath: .
     envVars: []
