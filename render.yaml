@@ -1,28 +1,22 @@
-diff --git a/render.yaml b/render.yaml
-new file mode 100644
-index 0000000000000000000000000000000000000000..d4d91d022dd95c23408306ec7e10d4c7b85743a0
---- /dev/null
-+++ b/render.yaml
-@@ -0,0 +1,22 @@
-+services:
-+  - type: web
-+    name: lms-api
-+    runtime: docker
-+    dockerfilePath: ./Dockerfile
-+    healthCheckPath: /health
-+    envVars:
-+      - key: APP_ENV
-+        value: prod
-+      - key: APP_NAME
-+        value: LMS MVP API
-+      - key: CORS_ORIGINS
-+        value: https://lms-web.onrender.com
-+      - key: DATABASE_URL
-+        sync: false
-+
-+  - type: web
-+    name: lms-web
-+    runtime: static
-+    rootDir: webapp
-+    staticPublishPath: .
-+    envVars: []
+services:
+  - type: web
+    name: lms-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: APP_NAME
+        value: LMS MVP API
+      - key: CORS_ORIGINS
+        value: https://lms-web.onrender.com
+      - key: DATABASE_URL
+        sync: false
+
+  - type: web
+    name: lms-web
+    runtime: static
+    rootDir: webapp
+    staticPublishPath: .
+    envVars: []
