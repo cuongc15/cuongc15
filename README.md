@@ -85,3 +85,11 @@ Nếu thu thập dữ liệu công khai để nghiên cứu thị trường:
 - Dùng Render Blueprint: `render.yaml` (API + web tĩnh).
 - Hoặc Railway cho API + Vercel/Netlify cho frontend.
 - Xem chi tiết tại `DEPLOY_FREE.md`.
+
+
+## 8) Triển khai phương án B (Railway + Vercel/Netlify)
+
+- API deploy trên Railway: dùng `railway.json`.
+- Frontend deploy trên Vercel/Netlify: dùng thư mục `webapp/`.
+- Đổi `webapp/config.js` theo mẫu `webapp/config.production.example.js`.
+- Xem checklist chi tiết tại `DEPLOY_FREE.md` (mục 2).
