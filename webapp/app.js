@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE || 'http://127.0.0.1:8000';
+const API_BASE = window.API_BASE || 'postgresql://postgres:xVFOrWrHXkYlYanwDNmaRvmcQbJayoOd@kodama.proxy.rlwy.net:44666/railway';
 
 const classForm = document.getElementById('classForm');
 const assignmentForm = document.getElementById('assignmentForm');
