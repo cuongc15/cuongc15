@@ -130,3 +130,16 @@ Cách sửa đã áp dụng trong repo:
 ```
 
 Sau khi pull code mới, bấm **Redeploy** lại service API trên Railway.
+
+
+### Lỗi Railway: Healthcheck failure dù build/deploy xanh
+
+Nếu Railway báo fail ở bước **Network > Healthcheck**, nguyên nhân thường là DB chưa sẵn sàng ngay thời điểm startup.
+
+Đã cập nhật backend để:
+- Không crash toàn service nếu `create_all()` lỗi tạm thời khi startup.
+- `/health` vẫn trả `status=ok` để Railway pass network check, đồng thời trả thêm `db_ok` và `db_error` để bạn theo dõi DB.
+
+Sau deploy, kiểm tra:
+- `GET /health`
+- Nếu `db_ok=false`, kiểm tra lại `DATABASE_URL` và environment của PostgreSQL.

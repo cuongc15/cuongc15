@@ -5,7 +5,7 @@ from uuid import uuid4
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-from sqlalchemy import DateTime, ForeignKey, Numeric, String, create_engine, select
+from sqlalchemy import DateTime, ForeignKey, Numeric, String, create_engine, select, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column
 
 from backend.config import get_settings
@@ -72,12 +72,25 @@ app.add_middleware(
 
 @app.on_event("startup")
 def startup() -> None:
-    Base.metadata.create_all(engine)
+    try:
+        Base.metadata.create_all(engine)
+    except Exception as exc:
+        # Không crash service chỉ vì DB tạm thời chưa sẵn sàng trên Railway.
+        print(f"[startup] database init skipped: {exc}")
 
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "env": settings.app_env}
+    db_ok = True
+    db_error = None
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+    except Exception as exc:
+        db_ok = False
+        db_error = str(exc)
+
+    return {"status": "ok", "env": settings.app_env, "db_ok": db_ok, "db_error": db_error}
 
 
 @app.get("/api/classes")
