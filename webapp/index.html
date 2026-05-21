@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LMS Web Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>LMS / Thi trực tuyến - Demo giao diện web</h1>
+      <div class="topbar-actions">
+        <button id="seedDataBtn" type="button">Nạp dữ liệu mẫu</button>
+        <button id="clearDataBtn" type="button" class="danger">Xóa dữ liệu</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Lớp học</h2>
+        <form id="classForm">
+          <input id="className" placeholder="Tên lớp (VD: 10A1 Toán)" required />
+          <input id="subject" placeholder="Môn học" required />
+          <button type="submit">Tạo lớp</button>
+        </form>
+        <ul id="classList" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Bài tập / Đề kiểm tra</h2>
+        <form id="assignmentForm">
+          <select id="classSelect" required></select>
+          <input id="assignmentTitle" placeholder="Tiêu đề bài" required />
+          <input id="dueAt" type="datetime-local" required />
+          <button type="submit">Giao bài</button>
+        </form>
+        <ul id="assignmentList" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Nộp bài</h2>
+        <form id="submissionForm">
+          <select id="assignmentSelect" required></select>
+          <input id="studentName" placeholder="Tên học sinh" required />
+          <input id="score" type="number" min="0" max="10" step="0.25" placeholder="Điểm" required />
+          <button type="submit">Nộp & chấm</button>
+        </form>
+
+        <div class="toolbar">
+          <label for="classFilter">Lọc theo lớp:</label>
+          <select id="classFilter"></select>
+        </div>
+
+        <ul id="gradeList" class="list"></ul>
+        <p id="avgScore" class="summary"></p>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
