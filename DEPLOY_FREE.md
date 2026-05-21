@@ -116,3 +116,17 @@ window.API_BASE = 'https://<your-railway-api>.up.railway.app';
 ### Vercel/Netlify frontend
 - Deploy thư mục `webapp/` dạng static.
 - Không cần build image Docker.
+
+
+### Lỗi Railway: `Invalid value for --port: $PORT is not a valid integer`
+
+Nguyên nhân: Railway chạy start command theo exec form nên `$PORT` không tự expand trong một số trường hợp.
+
+Cách sửa đã áp dụng trong repo:
+- `railway.json` dùng `sh -c` để expand biến môi trường:
+
+```json
+"startCommand": "sh -c 'uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-8000}'"
+```
+
+Sau khi pull code mới, bấm **Redeploy** lại service API trên Railway.
