@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE || 'postgresql://postgres:xVFOrWrHXkYlYanwDNmaRvmcQbJayoOd@kodama.proxy.rlwy.net:44666/railway';
+const API_BASE = window.API_BASE || 'lms-api-production-248a.up.railway.app';
 
 const classForm = document.getElementById('classForm');
 const assignmentForm = document.getElementById('assignmentForm');
