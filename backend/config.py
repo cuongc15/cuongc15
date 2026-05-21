@@ -5,8 +5,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     app_env: str = "dev"
     app_name: str = "LMS MVP API"
-    database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/lms_platform"
-    cors_origins: str = "http://localhost:8080,http://127.0.0.1:8080"
+    database_url: str = "postgresql://postgres:xVFOrWrHXkYlYanwDNmaRvmcQbJayoOd@postgres.railway.internal:5432/railway"
+    cors_origins: str = "https://cuongc15.vercel.app/"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
