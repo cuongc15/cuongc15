@@ -42,7 +42,7 @@ Repo đã có `railway.json` sẵn start command và healthcheck.
 ```env
 APP_ENV=prod
 APP_NAME=LMS MVP API
-DATABASE_URL=postgresql://postgres:xVFOrWrHXkYlYanwDNmaRvmcQbJayoOd@postgres.railway.internal:5432/railway
+DATABASE_URL=postgresql+psycopg://<db_user>:<db_password>@<db_host>:5432/<db_name>
 CORS_ORIGINS=https://cuongc15-git-main-biencuongs-projects.vercel.app
 ```
 
